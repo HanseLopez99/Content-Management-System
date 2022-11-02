@@ -72,3 +72,5 @@ group :test do
 end
 
 gem "ffi", "~> 1.15"
+
+gem "devise", "~> 4.8"
