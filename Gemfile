@@ -71,6 +71,11 @@ group :test do
   gem "webdrivers"
 end
 
+# ffi is required by the pg gem
 gem "ffi", "~> 1.15"
 
+# Devise is a flexible authentication solution for Rails based on Warden.
 gem "devise", "~> 4.8"
+
+# letter_opener gem for email testing
+gem "letter_opener", group: :development
