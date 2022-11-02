@@ -14,22 +14,25 @@
 # Configure Using Gemfile
 # gem "pg"
 #
-default: &default
+common: &common
+  pool: 30
+  host: 127.0.0.1
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  reconnect: false
 
 development:
-  <<: *default
-  database: ContentManagementSystem_development
+  <<: *common
+  database: <%= Rails.application.credentials.db[:database] %>
+  username: <%= Rails.application.credentials.db[:username] %>
+  password: <%= Rails.application.credentials.db[:password] %>
+  port: <%= Rails.application.credentials.db.dig(:port) || 5432 %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: ContentManagementSystem
+  #username: TheNewsletterApp
 
   # The password associated with the postgres role (username).
   #password:
@@ -56,8 +59,11 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: ContentManagementSystem_test
+  <<: *common
+  database: <%= Rails.application.credentials.db[:database] %>
+  username: <%= Rails.application.credentials.db[:username] %>
+  password: <%= Rails.application.credentials.db[:password] %>
+  port: <%= Rails.application.credentials.db[:port] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,7 +86,7 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
+  <<: *common
   database: ContentManagementSystem_production
   username: ContentManagementSystem
   password: <%= ENV["CONTENTMANAGEMENTSYSTEM_DATABASE_PASSWORD"] %>
