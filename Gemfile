@@ -77,5 +77,8 @@ gem "ffi", "~> 1.15"
 # Devise is a flexible authentication solution for Rails based on Warden.
 gem "devise", "~> 4.8"
 
+# Sass is a mature, stable, and powerful professional grade CSS extension language.
+gem 'sass-rails', '>= 6'
+
 # letter_opener gem for email testing
 gem "letter_opener", group: :development

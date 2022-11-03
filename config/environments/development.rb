@@ -65,6 +65,10 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
+  
+  # Config to use scss
+  config.sass.preferred_syntax = :scss
+  config.sass.sintax = :scss
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
