@@ -1,13 +1,27 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Pages</h1>
+<div class="col-lg-8 mx-auto">
+  <div class="card shadow">
+    <div class="card-header">
+      <h1>Pages</h1>
+    </div>
+  </div>
+  <br>
+</div>
 
 <div id="pages">
   <% @pages.each do |page| %>
-    <%= render page %>
-    <p>
-      <%= link_to "Show this page", page %>
-    </p>
+    <div class="col-lg-10 mx-auto">
+        <div class="card shadow">
+          <div class="card-header">
+            <h2><%= page.name %></h2>
+          </div>
+          <div class="card-body">
+            <%= render page %>
+            <p>
+              <%= link_to "Show this page", page %>
+            </p>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
 

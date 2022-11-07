@@ -71,8 +71,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_07_054859) do
 
   create_table "pages", force: :cascade do |t|
     t.string "name"
+    t.bigint "blog_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["blog_id"], name: "index_pages_on_blog_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -112,6 +114,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_07_054859) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "contents", "blogs"
   add_foreign_key "contents", "pages"
+  add_foreign_key "pages", "blogs"
   add_foreign_key "teams", "blogs"
   add_foreign_key "teams", "users"
 end

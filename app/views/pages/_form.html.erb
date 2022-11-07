@@ -11,12 +11,24 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+  <br>
+
   <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
 
   <div>
+    <%= form.label :blog_id, style: "display: block" %>
+    <%= form.select :blog_id, @blogs.map { |n| [n.name, n.id] }, { :include_blank => '-- Select One --' }, :required => true %>
+  <div>
+
+  <div>
+    <br>
     <%= form.submit %>
   </div>
 <% end %>

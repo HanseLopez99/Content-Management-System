@@ -13,10 +13,13 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = Page.new
+
+    @blogs = Blog.all
   end
 
   # GET /pages/1/edit
   def edit
+    @blogs = Blog.all
   end
 
   # POST /pages or /pages.json
@@ -52,7 +55,8 @@ class PagesController < ApplicationController
     @page.destroy
 
     respond_to do |format|
-      format.html { redirect_to pages_url, notice: "Page was successfully destroyed." }
+      # Redirect to blogs show page
+      format.html { redirect_to blog_url(@page.blog_id), notice: "Page was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +69,6 @@ class PagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def page_params
-      params.require(:page).permit(:name)
+      params.require(:page).permit(:name, :blog_id, :image)
     end
 end
