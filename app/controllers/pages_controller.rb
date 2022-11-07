@@ -8,6 +8,11 @@ class PagesController < ApplicationController
 
   # GET /pages/1 or /pages/1.json
   def show
+    # Get current page name
+    @page_name = @page.name
+
+    # Get current page content
+    @content = Content.where(page_id: @page.id)
   end
 
   # GET /pages/new

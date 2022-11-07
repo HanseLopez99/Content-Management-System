@@ -1,10 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<div class="col-lg-12 mx-auto">
+  <div class="card shadow">
+    <div class="card-header">
+      <h1>Page content</h1>
+      <%= button_to "Add content", new_content_path(page_id: @page.id), method: :get, class: "btn btn-primary" %>
+    </div>
+    <div class="card-body">
 
-<%= render @page %>
 
-<div>
-  <%= link_to "Edit this page", edit_page_path(@page) %> |
-  <%= link_to "Back to pages", pages_path %>
-
-  <%= button_to "Destroy this page", @page, method: :delete %>
+      <div id="pages">
+        <h2><%= @page.name %></h2>
+        <% @content.each do |content| %>  
+          <%= content.content %>
+          <br>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

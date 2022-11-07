@@ -1,1 +1,40 @@
-<h1>Home</h1>
+<div class="col-lg-8 mx-auto">
+  <div class="card shadow">
+    <div class="card-header">
+      <h1>Home</h1>
+      <% if user_signed_in? %>
+        <h2>Welcome, <%= current_user.first_name + ' ' + current_user.last_name %></h2>
+      <% end %>
+    </div>
+  </div>
+  <br>
+</div>
+
+<div id="blogs">
+  <% @blogs.each do |blog| %>
+    <div class="col-lg-10 mx-auto">
+      <div class="card shadow">
+        <div class="card-header">
+          <h2><%= blog.name %></h2>
+        </div>
+        <div class="card-body">
+          <%= image_tag blog.image.variant(resize_to_fill: [300, 300]) if blog.image.attached? %>
+          <% if blog.image.attached? %>
+            <br>
+          <% end %>
+          
+          <br>
+          <%= blog.description%>
+          <br>
+          <br>
+          <div class="btn-group">
+            <%= button_to "View Pages", blog_path(blog), method: :get, class: "btn btn-primary" %>
+            <%= button_to "Edit this blog", edit_blog_path(blog), method: :get, class: "btn btn-primary" %>
+            <%= button_to "Destroy this blog", blog, method: :delete, class: "btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+    <br>
+  <% end %>
+</div>
+

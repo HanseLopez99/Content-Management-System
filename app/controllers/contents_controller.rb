@@ -13,10 +13,14 @@ class ContentsController < ApplicationController
   # GET /contents/new
   def new
     @content = Content.new
+    @blogs = Blog.all
+    @pages = Page.all
   end
 
   # GET /contents/1/edit
   def edit
+    @blogs = Blog.all
+    @pages = Page.where(blog_id: content_params)
   end
 
   # POST /contents or /contents.json

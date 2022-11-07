@@ -18,14 +18,10 @@
 
   <div>
     <%= form.label :blog_id, style: "display: block" %>
-    <%= form.text_field :blog_id %>
-  </div>
+    <%= form.select :blog_id, @blogs.map { |n| [n.name, n.id] }, { :include_blank => '-- Select One --' }, :required => true %>
 
-  <div>
     <%= form.label :page_id, style: "display: block" %>
-    <%= form.text_field :page_id %>
-  </div>
-
+    <%= form.select :page_id, @pages.map { |n| [n.name, n.id] }, { :include_blank => '-- Select One --' }, :required => true %>
   <div>
     <%= form.submit %>
   </div>
