@@ -12,6 +12,11 @@
   <% end %>
 
   <div>
+    <%= form.label :content, style: "display: block" %>
+    <%= form.rich_text_area :content %>
+  </div>
+
+  <div>
     <%= form.label :blog_id, style: "display: block" %>
     <%= form.text_field :blog_id %>
   </div>
