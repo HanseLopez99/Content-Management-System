@@ -7,6 +7,8 @@ class User < ApplicationRecord
   # Associations
   has_and_belongs_to_many :blogs, join_table: :teams, dependent: :destroy
 
+  has_one_attached :avatar
+
   # Enums
   enum role: [:editor, :admin]
 

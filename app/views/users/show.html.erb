@@ -6,7 +6,13 @@
       <h1> Your Profile </h1>
     </div>
     <div class="card-body">
+      <%= image_tag @user.avatar.variant(resize_to_fill: [300, 300]) if @user.avatar.attached? %>
+      <% if @user.avatar.attached? %>
+        <br>
+      <% end %>
       
+      <br>
+
       <br>
       <%= "First Name: #{@user.first_name}" %>
       <br>
