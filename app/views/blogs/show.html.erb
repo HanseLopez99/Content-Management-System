@@ -3,7 +3,9 @@
     <div class="card-header">
       <h1>Pages</h1>
       <% if current_user.admin? %>
-        <%= button_to "New page", new_page_path, method: :get, class: "btn btn-primary float-right" %>
+        <% if request.path == root_path || request.path.include?("pages") || request.path.include?("contents") || request.path.include?("blogs") || request.path.include?("users") %>
+          <%= button_to "New page", new_page_path, method: :get, class: "btn btn-primary float-right" %>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -26,10 +28,13 @@
           <br>
             <%= render page %>
             <div class="btn-group">
-              <%= button_to "View", page_path(page), method: :get, class: "btn btn-primary" %>
-              <%= button_to "Edit this page", edit_page_path(page), method: :get, class: "btn btn-primary" %>
-              <% if current_user.admin? %>
-                <%= button_to "Destroy this page", page, method: :delete, class: "btn btn-danger" %>
+              <%# <%= button_to "Preview as public", subdomain_page_path(@blog.subdomain, page.subtopic), method: :get, class: "btn btn-primary" %> 
+              <%= button_to "View Content", page_path(page), method: :get, class: "btn btn-primary" %>
+              <% if request.path == root_path || request.path.include?("pages") || request.path.include?("contents") || request.path.include?("blogs") || request.path.include?("users") %>
+                <%= button_to "Edit this page", edit_page_path(page), method: :get, class: "btn btn-primary" %>
+                <% if current_user.admin? %>
+                  <%= button_to "Destroy this page", page, method: :delete, class: "btn btn-danger" %>
+                <% end %>
               <% end %>
             </div>
         </div>
