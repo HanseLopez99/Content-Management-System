@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :contents
   resources :pages
   resources :teams
   resources :blogs

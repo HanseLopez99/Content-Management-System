@@ -3,6 +3,7 @@ class CreateBlogs < ActiveRecord::Migration[7.0]
     create_table :blogs do |t|
       t.string :name
       t.string :description
+      t.string :subdomain
 
       t.timestamps
     end

@@ -17,20 +17,27 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_07_015004) do
   create_table "blogs", force: :cascade do |t|
     t.string "name"
     t.string "description"
+    t.string "subdomain"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "contents", force: :cascade do |t|
+    t.bigint "blog_id", null: false
+    t.bigint "page_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_id"], name: "index_contents_on_blog_id"
+    t.index ["page_id"], name: "index_contents_on_page_id"
   end
 
   create_table "pages", force: :cascade do |t|
     t.string "name"
-    t.bigint "blog_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["blog_id"], name: "index_pages_on_blog_id"
   end
 
   create_table "teams", force: :cascade do |t|
-    t.string "name"
     t.bigint "user_id", null: false
     t.bigint "blog_id", null: false
     t.datetime "created_at", null: false
@@ -63,7 +70,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_07_015004) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "pages", "blogs"
+  add_foreign_key "contents", "blogs"
+  add_foreign_key "contents", "pages"
   add_foreign_key "teams", "blogs"
   add_foreign_key "teams", "users"
 end
