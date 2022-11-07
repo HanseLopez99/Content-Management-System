@@ -5,12 +5,20 @@
   font-weight: bold;
   font-family: 'Pacifico', cursive;
   font-style: italic;
+
+  h1 {
+    font-size: 2vw;
+  }
 }
 
-.nav-item {
-  font-size: 1.6vw;
+.navbar-nav {
+  gap: 1.3vw;
 
-  .nav-link {
-    font-style: italic;
+  .nav-item {
+    font-size: 1.6vw;
+
+    .nav-link {
+      font-style: italic;
+    }
   }
 }

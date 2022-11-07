@@ -15,6 +15,12 @@
         <br>
 
         <div class="field">
+          <%= f.label :role %>
+          <%= f.select :role, options_for_select([["Editor", 0], ["Admin", 1]]), :include_blank => 'Select a role', :required => true %>
+        </div>
+        <br>
+
+        <div class="field">
           <%= f.label :first_name, style: "display: block" %>
           <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
         </div>

@@ -5,6 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable, :trackable
 
   # Associations
-  has_many :teams
-  has_many :blogs, through: :teams
+  has_and_belongs_to_many :blogs, join_table: :teams, dependent: :destroy
+
+  # Enums
+  enum role: [:editor, :admin]
+
+  # Callbacks
+  after_initialize :set_default_role, :if => :new_record?
+
+  def set_default_role
+    self.role ||= :editor
+  end
+
 end

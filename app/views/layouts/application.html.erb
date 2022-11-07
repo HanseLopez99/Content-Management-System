@@ -20,11 +20,13 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
+              <% if current_user.admin? %>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="/blogs">My blogs</a>
+                </li>
+              <% end %>
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/newsletters">My Newsletters</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/subscriptions">My Subscriptions</a>
+                <a class="nav-link" aria-current="page" href="/blogs/new">Create a new blog</a>
               </li>
             </ul>
             <ul class="navbar-nav ms-auto">
