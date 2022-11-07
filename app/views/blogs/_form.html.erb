@@ -11,6 +11,12 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+  <br>
+
   <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
@@ -18,7 +24,7 @@
 
   <div>
     <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+    <%= form.text_area :description, cols: 40, rows: 15 %>
   </div>
 
   <div>

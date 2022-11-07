@@ -1,10 +1,16 @@
-<h1>Editing blog</h1>
+<div class="col-lg-8 mx-auto">
+  <div class="card shadow">
+    <div class="card-header">
+      <h1>Editing blog</h1>
+    </div>
+    <div class="card-body">
+      <%= render "form", blog: @blog %>
 
-<%= render "form", blog: @blog %>
+      <br>
 
-<br>
-
-<div>
-  <%= link_to "Show this blog", @blog %> |
-  <%= link_to "Back to blogs", blogs_path %>
+      <div class="btn-group">
+        <%= button_to "Show this blog", @blog, method: :get, class: "btn btn-primary" %>
+        <%= button_to "Back to blogs", blogs_path, method: :get, class: "btn btn-primary" %>
+    </div>
+  </div>
 </div>
