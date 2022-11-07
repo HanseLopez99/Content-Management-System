@@ -10,11 +10,4 @@ class User < ApplicationRecord
   # Enums
   enum role: [:editor, :admin]
 
-  # Callbacks
-  after_initialize :set_default_role, :if => :new_record?
-
-  def set_default_role
-    self.role ||= :editor
-  end
-
 end
