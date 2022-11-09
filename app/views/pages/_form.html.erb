@@ -11,6 +11,13 @@
     </div>
   <% end %>
 
+  <%= image_tag page.image.variant(resize_to_fill: [300, 300]) if page.image.attached? %>
+  <% if page.image.attached? %>
+    <br>
+  <% end %>
+  
+  <br>
+
   <div class="field">
     <%= form.label :image %>
     <%= form.file_field :image %>
@@ -23,8 +30,12 @@
   </div>
 
   <div>
-    <%= form.label :blog_id, style: "display: block" %>
-    <%= form.select :blog_id, @blogs.map { |n| [n.name, n.id] }, { :include_blank => '-- Select One --' }, :required => true %>
+    <% if page.new_record? %>
+      <%= form.label :blog_id, style: "display: block" %>
+      <%= form.select :blog_id, @blogs.map { |n| [n.name, n.id] }, { :include_blank => '-- Select One --' }, :required => true %>
+    <% else %>
+      <%= form.hidden_field :blog_id, value: @blog.id %>
+    <% end %>
   <div>
 
   <div>

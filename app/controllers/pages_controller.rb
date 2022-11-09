@@ -24,7 +24,8 @@ class PagesController < ApplicationController
 
   # GET /pages/1/edit
   def edit
-    @blogs = Blog.all
+    # Get current blog from page
+    @blog = Blog.find(@page.blog_id)
   end
 
   # POST /pages or /pages.json
